@@ -1,0 +1,55 @@
+﻿@using Otobus1.Models;
+@model List<Bilet>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="jumbotron">
+        @Session["Ad"] @Session["Soyad"] 
+    </div>
+</div>
+<div class="container" style="min-width:85%;">
+    <!--<a href="/Bilet/Ekle" class="btn btn-primary" style="margin-bottom:20px;">Ekle</a>-->
+    <table class="table table-bordered bg-success">
+        <tr>
+            <th>Nereden</th>
+            <th>Nereye</th>
+            <th>Tarih</th>
+            @if (User.IsInRole("A"))
+            {
+                <th>İptal</th>
+            }
+            @if (User.IsInRole("A"))
+            {
+                <th>Bilet Alma</th>
+            }
+
+        </tr>
+
+        @foreach (var item in Model)
+        {
+    <tr>
+        <td>@item.Ad</td>
+        <td>@item.Aciklama</td>
+        <td>@item.Stok</td>
+        @if (User.IsInRole("A"))
+        {
+            <td>@Html.ActionLink("İptal", "Sil", new { id = item.id }, new { @class = "btn btn-danger", onclick = "return confirm('İptal Etmek İstiyor Musunuz?')" })</td>
+
+        }
+        @if (User.IsInRole("A"))
+        {
+            <td><a href="/Account/Ticket"><button class="btn btn-success">Satın Al</button></a></td>
+
+        }
+
+    </tr>
+        }
+    </table>
+</div>
+
+
+

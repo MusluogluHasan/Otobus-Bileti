@@ -1,0 +1,71 @@
+﻿@model Otobus1.Models.Bilet
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container">
+    <div class="jumbotron">
+        @Session["Ad"] @Session["Soyad"] Hoşgeldiniz
+    </div>
+</div>
+<style>
+    .home {
+        display: flex;
+        justify-content: center;
+    }
+
+    .box {
+        width: 500px;
+        height: 200px;
+        background: #fff;
+        border-radius: .5em;
+    }
+
+    .btn-icon {
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+</style>
+<form class="form-group" method="post">
+
+
+
+    <div style="margin-top20px">
+        <button class="btn btn-success" type="submit"><a href="/Bilet/Ekle">Bilet Alma Sayfasına Gİt</a></button>
+    </div>
+
+</form>
+<!--
+<section class="home" id="home">
+    <div class="box-container">
+        <div class="box">
+            <form action="">
+                <div class="start location group">
+                    <div class="input-box">
+                        <div class="input-group" style="margin:15px 0;">
+                            <label for="origin-input">Hareket Noktası</label>
+                            <input type="search" name="nereden" id="nereye" style="width: 300px;height: 40px;margin-left: 2px;"placeholder="İl veye ilçe adı yazın">
+                            <button class="btn-icon" type="button"></button>
+                        </div>
+                    </div>
+                    <div class="input-box">
+                        <div class="input-group" style="margin:15px 0;">
+                            <label for="origin-input">Varış Noktası</label>
+                            <input type="search" name="nereye" id="nereye" style="width:300px; height:40px; margin-left:20px;" placeholder="Ankara">
+                            <button class="btn-icon" type="button"></button>
+                        </div>
+                    </div>
+                    <div class="input-box">
+                        <div class="input-group" style="margin:15px 0;">
+                            <label for="origin-input">Yolculuk Tarihi</label>
+                            <input type="datetime" name="datetime" id="datetime" style=" width: 300px;height: 40px;margin-left: 10px;">
+                        </div>
+                    </div>
+                </div>
+                <a href="/Account/Ticket" ><buttqn class="btn bg-primary">Seç</buttqn></a>
+            </form>
+        </div>
+    </div>
+</section>
+-->

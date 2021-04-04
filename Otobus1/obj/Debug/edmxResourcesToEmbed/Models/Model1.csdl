@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BiletSatısModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="BiletSatısEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Bilet" EntityType="BiletSatısModel.Bilet" />
+    <EntitySet Name="Kategori" EntityType="BiletSatısModel.Kategori" />
+    <EntitySet Name="Kullanici" EntityType="BiletSatısModel.Kullanici" />
+    <EntitySet Name="Satislar" EntityType="BiletSatısModel.Satislar" />
+    <EntitySet Name="Sepet" EntityType="BiletSatısModel.Sepet" />
+    <EntitySet Name="sysdiagrams" EntityType="BiletSatısModel.sysdiagrams" />
+    <AssociationSet Name="FK_Satislar_Bilet" Association="BiletSatısModel.FK_Satislar_Bilet">
+      <End Role="Bilet" EntitySet="Bilet" />
+      <End Role="Satislar" EntitySet="Satislar" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sepet_Bilet" Association="BiletSatısModel.FK_Sepet_Bilet">
+      <End Role="Bilet" EntitySet="Bilet" />
+      <End Role="Sepet" EntitySet="Sepet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Satislar_Kullanici" Association="BiletSatısModel.FK_Satislar_Kullanici">
+      <End Role="Kullanici" EntitySet="Kullanici" />
+      <End Role="Satislar" EntitySet="Satislar" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sepet_Kullanici" Association="BiletSatısModel.FK_Sepet_Kullanici">
+      <End Role="Kullanici" EntitySet="Kullanici" />
+      <End Role="Sepet" EntitySet="Sepet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Bilet">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Aciklama" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Fiyat" Type="Int32" />
+    <Property Name="Stok" Type="DateTime" Precision="0" />
+    <Property Name="Populer" Type="Boolean" />
+    <Property Name="KategoriId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Satislar" Relationship="BiletSatısModel.FK_Satislar_Bilet" FromRole="Bilet" ToRole="Satislar" />
+    <NavigationProperty Name="Sepet" Relationship="BiletSatısModel.FK_Sepet_Bilet" FromRole="Bilet" ToRole="Sepet" />
+  </EntityType>
+  <EntityType Name="Kategori">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Aciklama" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Durum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Kullanici">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Soyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Parola" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Rol" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Satislar" Relationship="BiletSatısModel.FK_Satislar_Kullanici" FromRole="Kullanici" ToRole="Satislar" />
+    <NavigationProperty Name="Sepet" Relationship="BiletSatısModel.FK_Sepet_Kullanici" FromRole="Kullanici" ToRole="Sepet" />
+  </EntityType>
+  <EntityType Name="Satislar">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BiletId" Type="Int32" />
+    <Property Name="Adet" Type="Int32" />
+    <Property Name="Fiyat" Type="Int32" />
+    <Property Name="Tarih" Type="DateTime" Precision="3" />
+    <Property Name="KullaniciId" Type="Int32" />
+    <NavigationProperty Name="Bilet" Relationship="BiletSatısModel.FK_Satislar_Bilet" FromRole="Satislar" ToRole="Bilet" />
+    <NavigationProperty Name="Kullanici" Relationship="BiletSatısModel.FK_Satislar_Kullanici" FromRole="Satislar" ToRole="Kullanici" />
+  </EntityType>
+  <EntityType Name="Sepet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BiletId" Type="Int32" />
+    <Property Name="Adet" Type="Int32" />
+    <Property Name="Fiyat" Type="Int32" />
+    <Property Name="Tarih" Type="DateTime" Precision="3" />
+    <Property Name="KullaniciId" Type="Int32" />
+    <NavigationProperty Name="Bilet" Relationship="BiletSatısModel.FK_Sepet_Bilet" FromRole="Sepet" ToRole="Bilet" />
+    <NavigationProperty Name="Kullanici" Relationship="BiletSatısModel.FK_Sepet_Kullanici" FromRole="Sepet" ToRole="Kullanici" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_Satislar_Bilet">
+    <End Type="BiletSatısModel.Bilet" Role="Bilet" Multiplicity="0..1" />
+    <End Type="BiletSatısModel.Satislar" Role="Satislar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bilet">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Satislar">
+        <PropertyRef Name="BiletId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sepet_Bilet">
+    <End Type="BiletSatısModel.Bilet" Role="Bilet" Multiplicity="0..1" />
+    <End Type="BiletSatısModel.Sepet" Role="Sepet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bilet">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Sepet">
+        <PropertyRef Name="BiletId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Satislar_Kullanici">
+    <End Type="BiletSatısModel.Kullanici" Role="Kullanici" Multiplicity="0..1" />
+    <End Type="BiletSatısModel.Satislar" Role="Satislar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kullanici">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Satislar">
+        <PropertyRef Name="KullaniciId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sepet_Kullanici">
+    <End Type="BiletSatısModel.Kullanici" Role="Kullanici" Multiplicity="0..1" />
+    <End Type="BiletSatısModel.Sepet" Role="Sepet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kullanici">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Sepet">
+        <PropertyRef Name="KullaniciId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

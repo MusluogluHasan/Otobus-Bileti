@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c629227b8765475380412257a6562ecb" Name="Diagram1" ZoomLevel="86">
+        <EntityTypeShape EntityType="BiletSatısModel.Bilet" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="BiletSatısModel.Kategori" Width="1.5" PointX="0.75" PointY="8.875" />
+        <EntityTypeShape EntityType="BiletSatısModel.Kullanici" Width="1.5" PointX="0.75" PointY="4.875" />
+        <EntityTypeShape EntityType="BiletSatısModel.Satislar" Width="1.5" PointX="3" PointY="4.875" />
+        <EntityTypeShape EntityType="BiletSatısModel.Sepet" Width="1.5" PointX="6" PointY="4.875" />
+        <EntityTypeShape EntityType="BiletSatısModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="8.875" />
+        <AssociationConnector Association="BiletSatısModel.FK_Satislar_Bilet" />
+        <AssociationConnector Association="BiletSatısModel.FK_Sepet_Bilet" />
+        <AssociationConnector Association="BiletSatısModel.FK_Satislar_Kullanici" />
+        <AssociationConnector Association="BiletSatısModel.FK_Sepet_Kullanici" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

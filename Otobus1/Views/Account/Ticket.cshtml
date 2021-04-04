@@ -1,0 +1,77 @@
+﻿
+@{
+    ViewBag.Title = "Ticket";
+}
+
+<style>
+    .row {
+        background: #808080;
+        width: 60%;
+        height: 250px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-flow:column;
+    }
+    ul{
+        display:flex;
+        align-items:center;
+        justify-content:center;
+    }
+    button{
+        padding:10px 15px;
+        margin-right:25px;
+    }
+    .son{
+        margin-top:50px;
+    }
+    .red:focus {
+        background: red;
+    }
+    .green:focus {
+        background: green;
+    }
+
+</style>
+
+
+<div class="container">
+    <div class="row">
+        <ul>
+            <li><button>3</button></li>
+            <li><button>6</button></li>
+            <li><button>9</button></li>
+            <li><button>12</button></li>
+            <li><button>15</button></li>
+            <li><button>18</button></li>
+            <li><button>20</button></li>
+        </ul>
+        <ul>
+            <li><button>2</button></li>
+            <li><button>5</button></li>
+            <li><button>8</button></li>
+            <li><button>11</button></li>
+            <li><button>14</button></li>
+            <li><button>17</button></li>
+            <li><button>19</button></li>
+        </ul>
+        <ul class="son">
+            <li><button>1</button></li>
+            <li><button>4</button></li>
+            <li><button>7</button></li>
+            <li><button>10</button></li>
+            <li><button>13</button></li>
+            <li><button>16</button></li>
+            <li><button>M</button></li>
+        </ul>
+    </div>
+</div>
+<a href="/Bilet/Index">Satın Al</a>
+<script>
+    $(document).ready(function () {
+        $('button').click(function () {
+            $(this).css("background-color", "#00C600");
+        })
+    });
+</script>
+   
